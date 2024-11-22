@@ -698,3 +698,80 @@ ul li {
 .demo-message p {
   margin: 0;
 }
+
+/* General Section Styles */
+section {
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+  margin-bottom: 40px;
+}
+
+.section-header h2 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.section-header p {
+  font-size: 1.1em;
+  color: #777;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Product Strategy & Management Section */
+.product-strategy .strategy-container,
+.team-leadership .leadership-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+.strategy-box,
+.leadership-box {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.strategy-box i,
+.leadership-box i {
+  font-size: 3em;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.strategy-box h3,
+.leadership-box h3 {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.strategy-box p,
+.leadership-box p {
+  font-size: 1em;
+  color: #555;
+}
+
+/* Hover Effect for Boxes */
+.strategy-box:hover,
+.leadership-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .strategy-container,
+  .leadership-container {
+    grid-template-columns: 1fr;
+  }
+}
