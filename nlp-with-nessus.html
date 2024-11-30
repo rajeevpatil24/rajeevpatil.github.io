@@ -4,18 +4,413 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NLP with Nessus</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    header {
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: 20px auto;
+      background: #ffffff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    p {
+      margin: 10px 0;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #2c3e50;
+      color: #fff;
+      margin-top: 20px;
+    }
+    code, pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      display: block;
+      margin: 10px 0;
+      font-family: "Courier New", Courier, monospace;
+    }
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    h2 {
+      color: #2c3e50;
+      margin-top: 20px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    ul li {
+      margin: 5px 0;
+    }
+    .highlight {
+      font-weight: bold;
+      text-decoration: underline;
+      color: #e74c3c;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>NLP with Nessus</h1>
   </header>
   <main>
-    <p>Welcome to the NLP with Nessus demo page! Here we explore the integration of Natural Language Processing techniques with Nessus security scanning tools.</p>
-    <!-- Add more content or sections as needed -->
-  </main>
-  <footer>
-    <p>&copy; 2024 Your Project Name</p>
-  </footer>
-</body>
-</html>
+    <p>Welcome to the <strong>NLP with Nessus</strong> demo page! Let's explore the integration of <em>Natural Language Processing</em> techniques with Nessus security scanning tools.</p>
+
+    <h2>What is the Nessus API?</h2>
+    <p><strong>Nessus API Overview:</strong></p>
+    <ul>
+      <li>The <span class="highlight">Nessus API</span> is a RESTful API provided by Tenable Nessus for programmatically interacting with Nessus scanners.</li>
+      <li>It allows users to:
+        <ul>
+          <li>Manage scans.</li>
+          <li>Fetch scan reports.</li>
+          <li>Automate security workflows.</li>
+        </ul>
+      </li>
+    </ul>
+    <p>All Nessus API calls require authorization, either with a session token or API keys.</p>
+
+    <h2>Setup Instructions</h2>
+    <p>In this tutorial, we focus on how to use the Docker image of Nessus and launch it locally or in a VM.</p>
+
+    <p><strong>Step 1:</strong> Make sure Docker is installed and Docker Desktop is running fine.</p>
+    <p><strong>Step 2:</strong> Execute the following command to install the Nessus Ubuntu version:</p>
+    <code>docker pull tenable/nessus:latest-ubuntu</code>
+    <p>Alternatively, if you want another version, visit <a href="https://hub.docker.com/r/tenable/nessus/tags?name=ubuntu" target="_blank">Nessus Docker Hub</a>.</p>
+
+    <p><strong>Step 3:</strong> Verify the downloaded image:</p>
+    <code>docker images</code>
+    <p>Output example:</p>
+    <pre>
+REPOSITORY       TAG             IMAGE ID       CREATED        SIZE
+tenable/nessus   latest-ubuntu   12234124234    8 days ago     897MB
+    </pre>
+
+    <p><strong>Step 4:</strong> Run the image:</p>
+    <code>docker run -d -p 8834:8834 --name nessus tenable/nessus:latest-ubuntu</code>
+    <p>Here, <span class="highlight">8834</span> is the port being used. Replace it with any free port if needed.</p>
+
+    <p><strong>Step 5:</strong> Check the running container:</p>
+    <code>docker ps</code>
+    <p>Example output:</p>
+    <pre>
+CONTAINER ID   IMAGE                          COMMAND                  CREATED        STATUS        PORTS                    NAMES
+acjshdb223     tenable/nessus:latest-ubuntu   "/bin/bash -c 'cat /…"   26 hours ago   Up 26 hours   0.0.0.0:8834->8834/tcp   nessus
+    </pre>
+
+    <p><strong>Step 6:</strong> Enter the container:</p>
+    <code>docker exec -it &lt;CONTAINER_ID&gt; /bin/bash</code>
+    <p>Update all packages in the container if required, then exit.</p>
+
+    <p><strong>Step 7:</strong> Get the container's IP address:</p>
+    <code>docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nessus</code>
+
+    <p>Open your browser and navigate to:</p>
+    <code>https://localhost:8834/#/</code>
+    <p>Create a <strong>Nessus account</strong> (trial or professional license).</p>
+
+    <h2>How to Get Access & Secret Keys</h2>
+    <p>Once your account is created, follow these steps:</p>
+    <ul>
+      <li>Go to <strong>My Account</strong> → <strong>API Keys</strong> → <span class="highlight">Generate</span>.</li>
+      <li>Save the Access and Secret keys in a secure location to use in API calls.</li>
+    </ul>
+        <ul>
+          <li>Go to <strong>My Account</strong> → <strong>API Keys</strong> → <span class="highlight">Generate</span>.</li>
+          <li>Save the Access and Secret keys in a secure location to use in API calls.</li>
+        </ul>
+
+        <h2>Additional Docker Operations</h2>
+        <p>In addition to the Nessus container, let’s set up an HTTP server using the <code>httpd</code> Docker image and perform similar operations as above.</p>
+
+        <p><strong>Step 1:</strong> Pull the <code>httpd</code> Docker image:</p>
+        <code>docker pull httpd:latest</code>
+
+        <p><strong>Step 2:</strong> Run the container:</p>
+        <code>docker run -d -p 8080:80 --name web-server httpd</code>
+
+        <p><strong>Step 3:</strong> Verify the running container:</p>
+        <code>docker ps</code>
+
+        <p><strong>Step 4:</strong> Access the container:</p>
+        <code>docker exec -it &lt;CONTAINER_ID&gt; /bin/bash</code>
+
+        <p>Once inside the container, update all required packages:</p>
+        <code>apt update && apt upgrade -y</code>
+
+        <h2>Creating Vulnerable Files</h2>
+        <p>Within the HTTP server container, create some files with vulnerabilities:</p>
+
+        <h3>File 1: <code>vulnerable_sql.php</code></h3>
+        <p>Create a file named <code>vulnerable_sql.php</code> with the following content:</p>
+        <pre>
+        &lt;?php
+        // Vulnerable SQL Query
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "testdb";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $user_input = $_GET['username']; // Unsanitized input
+        $sql = "SELECT * FROM users WHERE username = '$user_input'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "User: " . $row["username"]. " - Email: " . $row["email"]. "&lt;br&gt;";
+            }
+        } else {
+            echo "0 results";
+        }
+        $conn->close();
+        ?&gt;
+        </pre>
+
+        <h3>File 2: <code>vulnerable_file_inclusion.php</code></h3>
+        <p>Create another file named <code>vulnerable_file_inclusion.php</code> with the following content:</p>
+        <pre>
+        &lt;?php
+        // File Inclusion Vulnerability
+        if (isset($_GET['page'])) {
+            $page = $_GET['page'];
+            include($page);
+        } else {
+            echo "Please provide a page parameter.";
+        }
+        ?&gt;
+        </pre>
+
+        <h2>Get the IP Address of the Container</h2>
+        <p>To find the IP address of this container, execute:</p>
+        <code>docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' web-server</code>
+
+        <p>Once you get the IP address, you can use it to access the vulnerable files in your browser:</p>
+        <code>http://&lt;container_ip&gt;/vulnerable_sql.php</code>
+        <code>http://&lt;container_ip&gt;/vulnerable_file_inclusion.php</code>
+
+            <h2>Perform Basic Scan on Your Container IP</h2>
+            <p>Once you have set up the vulnerable files and obtained the container IP, you can perform a basic scan on your container IP. This includes host discovery and basic network scanning.</p>
+            <p>After the scan completes and the reports are generated on the Nessus dashboard, you can start interacting with the API to fetch the scan report details.</p>
+
+            <h3>Step 1: Create a Python File</h3>
+            <p>Create a Python file (e.g., <code>nessus_scan.py</code>) and add the following code to interact with the Nessus API:</p>
+
+            <pre>
+            import requests
+
+            # Nessus API Keys and URL
+            access_key = 'ACCESS'
+            secret_key = 'SECRET'
+            nessus_url = "https://localhost:8834/"  # Make sure this points to your Nessus instance
+            scan_url = f"{nessus_url}/scans"
+
+            # Headers for API requests
+            headers = {
+                "X-ApiKeys": f"accessKey={access_key}; secretKey={secret_key}",
+                "Content-Type": "application/json"
+            }
+
+            # Function to fetch scan details
+            def get_scans():
+                response = requests.get(scan_url, headers=headers, verify=False)
+                if response.status_code == 200:
+                    scan_runs = response.json()
+                    for data in scan_runs.get('scans', []):
+                        scan_id = data['id']
+                        print(f"Fetching details for scan ID: {scan_id}")
+                        scan_summaries = get_scan_details(scan_id)
+                        print("Scan Summaries: ", scan_summaries)
+                else:
+                    print(f"Failed to fetch scans. HTTP Status: {response.status_code}")
+
+            # Function to fetch individual scan details
+            def get_scan_details(scan_id):
+                scan_details_url = f"{scan_url}/{scan_id}"
+                response = requests.get(scan_details_url, headers=headers, verify=False)
+                if response.status_code == 200:
+                    return response.json()
+                else:
+                    print(f"Failed to fetch details for scan ID: {scan_id}. HTTP Status: {response.status_code}")
+                    return {}
+            </pre>
+
+            <h3>Step 2: Explanation of Code</h3>
+            <ul>
+              <li>The <strong>access_key</strong> and <strong>secret_key</strong> should be replaced with your actual Nessus API keys.</li>
+              <li>The <strong>nessus_url</strong> should point to your Nessus instance (usually <code>https://localhost:8834/</code> if you're running it locally).</li>
+              <li>The <strong>get_scans</strong> function sends a GET request to the Nessus API to retrieve the list of scans.</li>
+              <li>For each scan retrieved, it calls the <strong>get_scan_details</strong> function to get more detailed information about the individual scan.</li>
+              <li>The response from the API will contain the scan details in JSON format, which can be parsed and used as needed.</li>
+            </ul>
+            <ul>
+              <li>The <strong>access_key</strong> and <strong>secret_key</strong> should be replaced with your actual Nessus API keys.</li>
+              <li>The <strong>nessus_url</strong> should point to your Nessus instance (usually <code>https://localhost:8834/</code> if you're running it locally).</li>
+              <li>The <strong>get_scans</strong> function sends a GET request to the Nessus API to retrieve the list of scans.</li>
+              <li>For each scan retrieved, it calls the <strong>get_scan_details</strong> function to get more detailed information about the individual scan.</li>
+              <li>The response from the API will contain the scan details in JSON format, which can be parsed and used as needed.</li>
+            </ul>
+
+            <h3>Step 3: Modify the <code>get_scan_details</code> Function</h3>
+            <p>In the <code>get_scan_details</code> function, we will now pick each scan ID passed and hit the API using the URL <code>indv_scan_id_url = f"{nessus_url}/scans/{scan_id}"</code> to fetch detailed information for each scan.</p>
+
+            <pre>
+            def get_scan_details(scan_id):
+                indv_scan_id_url = f"{nessus_url}/scans/{scan_id}"
+                response = requests.get(indv_scan_id_url, headers=headers, verify=False)
+                vuln_data = []
+
+                if response.status_code == 200:
+                    scan_details = response.json()
+
+                    # Check if notes are present and process them
+                    if 'notes' in scan_details:
+                        notes = scan_details['notes']
+                        df_notes = process_notes(notes)
+
+                        # Summarize the notes
+                        df_with_summaries = summarize_notes(df_notes)
+                        return df_with_summaries
+                    else:
+                        print("No notes found in scan details.")
+                else:
+                    print(f"Failed to fetch scan details. HTTP Status: {response.status_code}")
+                return vuln_data
+            </pre>
+
+            <h3>Step 4: Summarizing the Scan Notes with NLP</h3>
+            <p>The <code>summarize_notes</code> function integrates Nessus scan details with Natural Language Processing (NLP) techniques to provide meaningful summaries. The summarization utilizes a BART (Bidirectional and Auto-Regressive Transformers) model from the Hugging Face library, which is specifically fine-tuned for text summarization tasks.</p>
+
+            <h4>What the Summarizer Uses:</h4>
+            <ul>
+              <li><strong>Model:</strong> <code>facebook/bart-large-cnn</code></li>
+              <li><strong>Model Type:</strong> BART (Bidirectional and Auto-Regressive Transformers), a seq2seq model optimized for tasks like summarization, translation, and question-answering.</li>
+              <li><strong>Pretrained Dataset:</strong> The model has been fine-tuned on the <strong>CNN/Daily Mail</strong> dataset, which consists of news articles paired with human-written summaries.</li>
+            </ul>
+
+            <p>This NLP-based summarizer will generate concise summaries from the detailed notes provided in the Nessus scan report, which helps in quickly understanding the key findings and vulnerabilities without going through the entire report.</p>
+
+            <h3>Step 5: NLP Processing and Summarization of Scan Notes</h3>
+            <p>In this step, we will process the scan notes and use Natural Language Processing (NLP) techniques to summarize the content and identify key entities from the notes.</p>
+
+            <h4>Python Code: Summarization and Entity Extraction</h4>
+            <p>The following Python code will process the scan notes, summarize them, and extract key entities using NLP:</p>
+
+            <pre>
+            import spacy
+            from transformers import pipeline
+            import pandas as pd
+            import subprocess
+            import sys
+
+            # Load spaCy model for entity extraction
+            nlp = spacy.load("en_core_web_sm")
+            summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+
+            def process_notes(notes):
+                extracted_data = [
+                    {
+                        'severity': note.get('severity', 'N/A'),
+                        'message': note.get('message', 'N/A'),
+                        'title': note.get('title', 'N/A'),
+                        'type': note.get('type', 'N/A'),
+                    }
+                    for note in notes.get('note', [])
+                ]
+                return pd.DataFrame(extracted_data)
+
+            # Try loading spaCy model, if not installed, install it
+            try:
+                spacy.load("en_core_web_sm")
+            except ImportError:
+                print("spaCy is not installed. Installing spaCy...")
+                subprocess.check_call([sys.executable, "-m", "pip", "install", "spacy"])
+                subprocess.check_call([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
+
+            # Function to extract entities from text using spaCy
+            def extract_entities(text):
+                doc = nlp(text)
+                entities = [ent.text for ent in doc.ents]
+                return entities
+
+            # Function to summarize the notes using the BART model
+            def summarize_notes(df):
+                summaries = []
+                for _, row in df.iterrows():
+                    input_text = (
+                        f"Severity: {row['severity']}\n"
+                        f"Title: {row['title']}\n"
+                        f"Message: {row['message']}\n"
+                        f"Type: {row.get('type', 'N/A')}"
+                    )
+                    summary = summarizer(input_text, max_length=24, min_length=10, do_sample=False)
+                    summarized_text = summary[0]['summary_text'] if summary else "No summary available"
+                    entities = extract_entities(summarized_text)
+                    if entities:
+                        aggregated_summary = f"Key entities identified: {', '.join(entities)}."
+                    else:
+                        aggregated_summary = "No significant entities identified."
+                    summaries.append({'summarized_text': summarized_text, 'aggregated_summary': aggregated_summary})
+
+                return summaries
+            </pre>
+
+            <h4>Explanation of the Code:</h4>
+            <ul>
+              <li><strong>spaCy Model:</strong> The spaCy model <code>en_core_web_sm</code> is loaded to extract named entities from the summarized text.</li>
+              <li><strong>BART Summarizer:</strong> The BART model from Hugging Face is used to summarize the scan notes. The model is fine-tuned for summarization tasks.</li>
+              <li><strong>Entity Extraction:</strong> The function <code>extract_entities</code> extracts named entities (e.g., persons, locations, dates) from the summarized text using the spaCy model.</li>
+              <li><strong>Summarization:</strong> The function <code>summarize_notes</code> takes the scan notes and summarizes them, providing both the summarized text and a summary of the key entities found in the text.</li>
+            </ul>
+
+            <h3>Step 6: Running the Code</h3>
+            <p>Once you have processed the scan notes and summarized them, you can run this Python code to get a quick overview of the most significant findings from the scan.
+                The summarized text will give you the key points, and the aggregated summary will highlight any key entities identified in the scan.</p>
+
+            <p>Example output:</p>
+            <pre>
+            Summarized Text: "Severity: High, Message: SQL Injection vulnerability found,
+                Title: SQL Injection in login page, Type: Vulnerability"
+            Aggregated Summary: "Key entities identified: SQL Injection, login page."
+            </pre>
+
+            <p>This NLP-based summary will allow you to quickly understand the critical vulnerabilities identified in your Nessus scan reports without having to go through the full scan details.</p>
+
+            <h3>Conclusion</h3>
+            <p>By integrating Nessus with NLP techniques, we can automate the process of summarizing security scan reports and identify important entities, making it easier for security professionals to act on vulnerabilities efficiently. With the combination of Docker for containerization, Nessus for scanning, and NLP for summarization, you can streamline your security assessment workflows.</p>
+
+            <footer>
+                <p>&copy; 2024 Nessus NLP integration. All Rights Reserved.</p>
+            </footer>
+            </body>
+            </html>
+
