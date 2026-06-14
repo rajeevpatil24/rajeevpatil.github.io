@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[47035,["/_next/static/chunks/3rdqn8rx95pw7.js","/_next/static/chunks/14mrh2-p_w84d.js","/_next/static/chunks/3foez97cdhdsj.js"],"default"]
+3:I[97367,["/_next/static/chunks/3rdqn8rx95pw7.js","/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"max-w-5xl mx-auto px-8 py-16","children":[["$","h1",null,{"className":"text-5xl font-bold mb-10","children":"Resume Artifact Deployment"}],["$","p",null,{"className":"mt-3 text-slate-400 max-w-2xl","children":"Click the deployment button below to simulate a production GitOps workflow. The pipeline will provision infrastructure, synchronize platform services, validate security controls, and generate a downloadable resume artifact."}],["$","$L2",null,{}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/3foez97cdhdsj.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"CwooOWz1h08a9ZM7rdeSi"}
+5:null

@@ -1,0 +1,7 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,47035,e=>{"use strict";var l=e.i(43476),r=e.i(71645);let t=["git push","terraform apply","eks cluster ready","helm deployment","argocd sync","security validation","platform healthy"];e.s(["default",0,function(){let[e,a]=(0,r.useState)(-1),[s,d]=(0,r.useState)(!1);return(0,l.jsxs)("div",{children:[(0,l.jsx)("button",{onClick:()=>{a(-1),d(!1);let e=0,l=setInterval(()=>{a(e),++e>=t.length&&(clearInterval(l),d(!0))},1e3)},className:" rounded-xl bg-blue-600 px-6 py-3 font-semibold hover:bg-blue-500 transition ",children:"Deploy Principal Engineer Profile"}),(0,l.jsx)("div",{className:"mt-8 space-y-3",children:t.map((r,t)=>(0,l.jsxs)("div",{className:`
+              rounded-lg
+              border
+              px-4
+              py-2
+              ${t<=e?"border-emerald-500 bg-emerald-500/10 text-emerald-400":"border-white/10 text-slate-500"}
+            `,children:[t<=e?"✓":"○"," ",r]},r))}),s&&(0,l.jsxs)("div",{className:"mt-8",children:[(0,l.jsx)("div",{className:" mb-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-emerald-400 ",children:"Platform deployment successful. Resume artifact is now available."}),(0,l.jsx)("a",{href:"/resume.pdf",download:!0,className:" inline-block rounded-xl bg-emerald-600 px-6 py-3 font-semibold hover:bg-emerald-500 transition ",children:"Download Resume Artifact"})]})]})}])}]);
