@@ -1,65 +1,231 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useState } from "react";
+import Link from "next/link";
+
+import CVSystemOverview from "@/components/dashboard/SystemOverview";
+import SystemHealth from "@/components/dashboard/SystemHealth";
+import CareerEvidencePanel from "@/components/dashboard/CareerEvidencePanel";
+import RunFeed from "@/components/dashboard/RunFeed";
+import EventFeed from "@/components/dashboard/EventFeed";
+
+export default function Page() {
+  const [systemActive, setSystemActive] = useState(false);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-[#070B14] text-white">
+
+      {/* HEADER */}
+      <div className="px-10 py-8 border-b border-white/10 bg-black/30 backdrop-blur">
+
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+
+          <div>
+            <h1 className="text-3xl font-bold">
+              Career Control Plane
+            </h1>
+
+            <p className="text-slate-400 mt-2 max-w-3xl">
+              Interactive Platform Engineering operating system representing
+              13+ years of cloud infrastructure, Kubernetes, GitOps,
+              DevSecOps, observability, AI platform engineering and enterprise-scale delivery.
+            </p>
+
+            <div className="mt-4 flex flex-wrap gap-3">
+
+              <span className="px-3 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/10 text-cyan-300 text-sm">
+                Platform Engineering
+              </span>
+
+              <span className="px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/10 text-blue-300 text-sm">
+                Kubernetes
+              </span>
+
+              <span className="px-3 py-1 rounded-full border border-purple-500/20 bg-purple-500/10 text-purple-300 text-sm">
+                GitOps
+              </span>
+
+              <span className="px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-300 text-sm">
+                AI Platforms
+              </span>
+
+            </div>
+
+            <div className="mt-5 flex items-center gap-3 flex-wrap">
+
+              <button
+                onClick={() => setSystemActive(true)}
+                className="
+                  px-4 py-2 rounded-lg
+                  bg-blue-500/10
+                  border border-blue-500/30
+                  text-blue-300
+                  hover:bg-blue-500/20
+                  transition
+                "
+              >
+                ▶ Run Career Simulation
+              </button>
+
+              <Link
+                href="/career"
+                className="
+                  px-4 py-2 rounded-lg
+                  border border-white/10
+                  bg-white/5
+                  hover:bg-white/10
+                  transition
+                "
+              >
+                View Career Deployments
+              </Link>
+
+              <Link
+                href="/deploy-artifact"
+                className="
+                  px-4 py-2 rounded-lg
+                  border border-emerald-500/20
+                  bg-emerald-500/10
+                  text-emerald-300
+                "
+              >
+                Deploy Profile
+              </Link>
+
+            </div>
+
+            <div className="mt-4">
+
+              {!systemActive ? (
+                <span className="text-xs text-yellow-300 bg-yellow-500/10 border border-yellow-500/20 px-2 py-1 rounded">
+                  Waiting for system activation
+                </span>
+              ) : (
+                <span className="text-xs text-emerald-300">
+                  ● Platform Active (Streaming Career Signals)
+                </span>
+              )}
+
+            </div>
+
+          </div>
+
+          {/* Quick Stats */}
+
+          <div className="grid grid-cols-2 gap-3 min-w-[320px]">
+
+            <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+              <p className="text-slate-400 text-xs">
+                Experience
+              </p>
+              <p className="text-2xl font-bold mt-1">
+                13+
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+              <p className="text-slate-400 text-xs">
+                Enterprises
+              </p>
+              <p className="text-2xl font-bold mt-1">
+                5
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+              <p className="text-slate-400 text-xs">
+                Platform State
+              </p>
+              <p className="text-emerald-400 font-semibold mt-1">
+                Healthy
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+              <p className="text-slate-400 text-xs">
+                GitOps Sync
+              </p>
+              <p className="text-cyan-400 font-semibold mt-1">
+                Synced
+              </p>
+            </div>
+
+          </div>
+
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+      </div>
+
+      {/* GRID */}
+
+      <div className="p-10 grid grid-cols-12 gap-6">
+
+        {/* LEFT */}
+
+        <div className="col-span-12 lg:col-span-4 space-y-6">
+
+          <CVSystemOverview active={systemActive} />
+          <SystemHealth active={systemActive} />
+
         </div>
-      </main>
-    </div>
+
+        {/* RIGHT */}
+
+        <div className="col-span-12 lg:col-span-8 space-y-6">
+
+          {!systemActive ? (
+            <div className="border border-white/10 bg-white/5 rounded-xl p-10">
+
+              <h2 className="text-xl font-semibold">
+                Platform Overview
+              </h2>
+
+              <p className="text-slate-400 text-sm mt-2">
+                Principal-level platform engineering experience spanning cloud infrastructure,
+                Kubernetes platforms, GitOps delivery, DevSecOps automation and AI platform enablement.
+              </p>
+
+              <div className="mt-6 grid md:grid-cols-2 gap-4">
+
+                <div className="rounded-lg border border-white/10 p-4">
+                  <h3 className="font-medium">
+                    Cloud Native Platforms
+                  </h3>
+
+                  <p className="text-sm text-slate-400 mt-2">
+                    Kubernetes, Docker, Terraform, Helm, ArgoCD, GitOps
+                  </p>
+                </div>
+
+                <div className="rounded-lg border border-white/10 p-4">
+                  <h3 className="font-medium">
+                    AI Platform Engineering
+                  </h3>
+
+                  <p className="text-sm text-slate-400 mt-2">
+                    Kubeflow, MLflow, AI Infrastructure, MLOps Foundations
+                  </p>
+                </div>
+
+              </div>
+
+              <p className="text-xs text-slate-500 mt-6">
+                Run the simulation to observe career deployments, platform events and operational signals.
+              </p>
+
+            </div>
+          ) : (
+            <>
+              <CareerEvidencePanel />
+              <RunFeed />
+              <EventFeed />
+            </>
+          )}
+
+        </div>
+
+      </div>
+
+    </main>
   );
 }

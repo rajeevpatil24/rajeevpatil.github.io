@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2d078d1e-4b6b-40b8-b604-8b53040aef49" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/ai-control-plane/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/deploy-artifact/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/architecture/ServiceNode.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/architecture/systemGraph.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/career/CareerDeploymentCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/career/CareerTimeline.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/career/DeploymentPipeline.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/CareerEvidencePanel.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/ControlPlaneStats.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/EventFeed.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/EventStream.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/MetricCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/RunFeed.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/SystemHealth.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/SystemOverview.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/layout/Navbar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/resume/DeployArtifact.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/resume/DeployResumeButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/resume/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/shared/GlassCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/career.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/profile.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/skills.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/career-intelligence.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/control-plane/eventBus.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/control-plane/globalBus.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/control-plane/globalEventBus.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/control-plane/incidentEngine.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/control-plane/resumePipeline.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/control-plane/runEngine.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/control-plane/runRegistry.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/control-plane/systemEvents.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/control-plane/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/resume/ResumeExperience.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/resume/ResumeSystemOverview.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/resume/buildResumeFromCareer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/resume/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/skills/buildSkillMatrix.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/resume.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types/events.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="3ExJNmRTd8ICDeHATQVBpw5HjbO" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/rajeevpatil/PycharmProjects/platform-control-plane&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/components/architecture" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-4c141bd692a7-e2d783800521-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.26927.90" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2d078d1e-4b6b-40b8-b604-8b53040aef49" name="Changes" comment="" />
+      <created>1781114249978</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1781114249978</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.ts" />
+  </component>
+</project>
