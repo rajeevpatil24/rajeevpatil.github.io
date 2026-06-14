@@ -164,8 +164,8 @@ export default function Page() {
 
         <div className="col-span-12 lg:col-span-4 space-y-6">
 
-          <CVSystemOverview active={systemActive} />
-          <SystemHealth active={systemActive} />
+          <CVSystemOverview  />
+          <SystemHealth  />
 
         </div>
 
