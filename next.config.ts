@@ -2,9 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-
-  basePath: "/rajeevpatil.github.io",
-  assetPrefix: "/rajeevpatil.github.io",
+  images: { unoptimized: true }
 };
 
 export default nextConfig;
